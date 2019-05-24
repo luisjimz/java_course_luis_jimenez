@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="projectSyncType">
+      <map>
+        <entry key="$USER_HOME$/Downloads/luis-lesson2/luis-lesson2/luis-lesson2" value="PREVIEW" />
+        <entry key="$USER_HOME$/Downloads/springbootmvc(1)/springbootmvc" value="PREVIEW" />
+        <entry key="$USER_HOME$/Downloads/springbootmvc/springbootmvc" value="PREVIEW" />
+        <entry key="$USER_HOME$/Downloads/testing-module" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../luis-lesson2" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/../../../spring/my-web" value="PREVIEW" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="953" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
