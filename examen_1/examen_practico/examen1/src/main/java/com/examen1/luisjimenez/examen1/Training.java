@@ -11,7 +11,6 @@ public class Training {
     @Autowired
     private Person person;
 
-
     private String courseName;
     private List<Person> inscribed;
 
@@ -19,13 +18,23 @@ public class Training {
     }
 
     public int inscribedTotal(){
-        int x = this.inscribed.size();
-        if(x >= 0){
-            return x;
-        }
-        else{
+        if(this.getInscribed() == null){
             return 0;
         }
+        else{
+            return this.getInscribed().size();
+        }
+    }
+
+    @Override
+    public String toString(){
+        String miCadena = "Course name: " + this.courseName + "\n";
+        miCadena += "Students:";
+        for(int i = 0; i < this.getInscribed().size(); i++){
+//            miCadena += "\nStudent #" + i+1 + ": " + this.getInscribed().get(i);
+            miCadena += "\n" + this.getInscribed().get(i);
+        }
+        return miCadena;
     }
 
     //Getters & Setters

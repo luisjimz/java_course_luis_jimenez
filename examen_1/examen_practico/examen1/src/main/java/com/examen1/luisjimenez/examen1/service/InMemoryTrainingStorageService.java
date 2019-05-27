@@ -2,29 +2,34 @@ package com.examen1.luisjimenez.examen1.service;
 
 import com.examen1.luisjimenez.examen1.Training;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
 import java.util.List;
 
-@Component
+@Service
 public class InMemoryTrainingStorageService implements TrainingStorageService {
 
     @Autowired
     private Training training;
 
+    @Autowired
     private List<Training> courseList;
 
     public InMemoryTrainingStorageService(){
+        this.courseList = new LinkedList<>();
     }
 
     @Override
-    public void saveCourse(Training training) {
-        this.courseList.add(training);
+    public void saveCourse(Training training){
+        List<Training> miLista = this.getCourseList();
+        miLista.add(training);
+        this.setCourseList(miLista);
     }
 
     @Override
-    public List<Training> numberOfCourses(){
-        return this.courseList;
+    public int numberOfCourses(){
+        return this.getCourseList().size();
     }
 
     public Training getTraining() {

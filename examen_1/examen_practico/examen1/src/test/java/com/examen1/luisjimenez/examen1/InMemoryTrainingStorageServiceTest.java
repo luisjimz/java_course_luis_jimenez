@@ -3,9 +3,11 @@ package com.examen1.luisjimenez.examen1;
 import com.examen1.luisjimenez.examen1.service.InMemoryTrainingStorageService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.LinkedList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -13,11 +15,14 @@ import static org.junit.Assert.*;
 @SpringBootTest
 public class InMemoryTrainingStorageServiceTest {
 
-    @Autowired
-    private Person person;
-
-    @Autowired
-    private Training training;
+//    @Autowired
+//    private Person person;
+//
+//    @Autowired
+//    private Training training;
+//
+//    @Autowired
+//    private InMemoryTrainingStorageService myService;
 
 
     //GuardarCursos
@@ -26,52 +31,75 @@ public class InMemoryTrainingStorageServiceTest {
     @Test
     public void saveCourse_guardarCurso_Succes(){
         //Setup
-        person.setName("Luis");
-        person.setLastName("Jimenez");
+        InMemoryTrainingStorageService inMemoryTrainingStorageService = new InMemoryTrainingStorageService();
+        List<Person> misAlumnos = new LinkedList<>();
+        Training java = new Training();
+        Training angular = new Training();
+        Person a = new Person();
+        Person b = new Person();
+        Person c = new Person();
 
-        training.setCourseName("Java");
-        training.setPerson(person);
+        a.setName("Luis");
+        a.setLastName("Jimenez");
+        b.setName("Juan");
+        b.setLastName("De La Fuente");
+        c.setName("Ramiro");
+        c.setLastName("Ruvalcaba");
 
-        InMemoryTrainingStorageService myService = new InMemoryTrainingStorageService();
-        myService.saveCourse(training);
+        misAlumnos.add(a);
+        misAlumnos.add(b);
+        misAlumnos.add(c);
+
+        java.setInscribed(misAlumnos);
+        java.setCourseName("Java");
+        angular.setInscribed(misAlumnos);
+        angular.setCourseName("Angular");
 
         //Test
-        boolean checker;
-        if(myService.getCourseList()==null){
-            checker = false;
-        }
-        else{
-            checker = true;
-        }
+        inMemoryTrainingStorageService.saveCourse(java);
+        inMemoryTrainingStorageService.saveCourse(angular);
 
         //Verify
-        assertEquals("El objeto training no se ha almacenado correctamente", true, checker);
-
-
-
+        assertNotNull("La lista interna de mi servicio no ha sido instanciada", inMemoryTrainingStorageService.getCourseList());
+        assertNotEquals("El servicio no contiene cursos registrados", 0, inMemoryTrainingStorageService.getCourseList().size());
     }
 
     @Test
     public void numberOfCourses_mostrarCursosAlmacenados_listaConCursosAlmacenadosOCero(){
-
         //Setup
-        person.setName("Luis");
-        person.setLastName("Jimenez");
+        InMemoryTrainingStorageService inMemoryTrainingStorageService = new InMemoryTrainingStorageService();
+        List<Person> misAlumnos = new LinkedList<>();
+        Training java = new Training();
+        Training angular = new Training();
+        Person a = new Person();
+        Person b = new Person();
+        Person c = new Person();
 
-        training.setCourseName("Angular");
-        training.setCourseName("Java");
-        training.setPerson(person);
+        a.setName("Luis");
+        a.setLastName("Jimenez");
+        b.setName("Juan");
+        b.setLastName("De La Fuente");
+        c.setName("Ramiro");
+        c.setLastName("Ruvalcaba");
 
+        misAlumnos.add(a);
+        misAlumnos.add(b);
+        misAlumnos.add(c);
 
-        InMemoryTrainingStorageService myService = new InMemoryTrainingStorageService();
-        myService.saveCourse(training);
+        java.setInscribed(misAlumnos);
+        java.setCourseName("Java");
+        angular.setInscribed(misAlumnos);
+        angular.setCourseName("Angular");
+
 
         //Test
-
+        inMemoryTrainingStorageService.saveCourse(java);
+        inMemoryTrainingStorageService.saveCourse(angular);
+        inMemoryTrainingStorageService.numberOfCourses();
 
         //Verify
-
-
+        assertNotNull("La lista interna de mi servicio no ha sido instanciada", inMemoryTrainingStorageService.getCourseList());
+        assertEquals("La lista no contiene 2 cursos almacenados como se esperaria que fuera, almacena basura", 2, inMemoryTrainingStorageService.numberOfCourses());
 
     }
 }

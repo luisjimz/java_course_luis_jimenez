@@ -11,6 +11,11 @@ public class Person {
     public Person(){
     }
 
+    @Override
+    public String toString(){
+        return "Nombre: " + this.getName() + "\nApellido: " + this.getLastName();
+    }
+
     public String getName() {
         return name;
     }

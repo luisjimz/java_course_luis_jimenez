@@ -22,7 +22,7 @@ public class TrainingTest {
 
     //metodo_condicion_resultado
     @Test
-    public void totalInscritos_devolverTotalInscritosSiEsNuloDevolverCero_unEntero(){
+    public void inscribedTotal_devolverTotalInscritosSiEsNuloDevolverCero_unEntero(){
         //Setup
         Training training = new Training();
         List<Person> personList = new LinkedList<>();
@@ -38,7 +38,7 @@ public class TrainingTest {
     }
 
     @Test
-    public void totalInscritos_devolverSiempreUnNumeroPositivo_unEntero(){
+    public void inscribedTotal_devolverSiempreUnNumeroPositivo_unEntero(){
         //Setup
         Training training = new Training();
         List<Person> personList = new LinkedList<>();

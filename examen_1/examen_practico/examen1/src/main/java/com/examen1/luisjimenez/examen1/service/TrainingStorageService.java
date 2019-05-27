@@ -2,13 +2,14 @@ package com.examen1.luisjimenez.examen1.service;
 
 import com.examen1.luisjimenez.examen1.Training;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Component
+@Service
 public interface TrainingStorageService {
 
     void saveCourse(Training training);
-    List<Training> numberOfCourses();
+    int numberOfCourses();
 
 }
