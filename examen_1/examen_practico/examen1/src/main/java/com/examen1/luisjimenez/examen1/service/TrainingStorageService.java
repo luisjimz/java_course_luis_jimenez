@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public interface TrainingStorageService {
 
-    void saveCourse(Training training);
+    void saveTraining(Training training);
     int numberOfCourses();
 
 }

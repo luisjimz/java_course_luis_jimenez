@@ -1,6 +1,7 @@
 package com.examen1.luisjimenez.examen1;
 
 import com.examen1.luisjimenez.examen1.service.InMemoryTrainingStorageService;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,22 +15,15 @@ import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class InMemoryTrainingStorageServiceTest {
+    private InMemoryTrainingStorageService inMemoryTrainingStorageService;
 
-//    @Autowired
-//    private Person person;
-//
-//    @Autowired
-//    private Training training;
-//
-//    @Autowired
-//    private InMemoryTrainingStorageService myService;
-
-
-    //GuardarCursos
-    //MostrarCursosGuardados
+    @Before
+    public void setUp() throws Exception{
+        inMemoryTrainingStorageService = new InMemoryTrainingStorageService();
+    }
 
     @Test
-    public void saveCourse_guardarCurso_Succes(){
+    public void saveTraining_guardarCurso_Succes(){
         //Setup
         InMemoryTrainingStorageService inMemoryTrainingStorageService = new InMemoryTrainingStorageService();
         List<Person> misAlumnos = new LinkedList<>();
@@ -56,12 +50,12 @@ public class InMemoryTrainingStorageServiceTest {
         angular.setCourseName("Angular");
 
         //Test
-        inMemoryTrainingStorageService.saveCourse(java);
-        inMemoryTrainingStorageService.saveCourse(angular);
+        inMemoryTrainingStorageService.saveTraining(java);
+        inMemoryTrainingStorageService.saveTraining(angular);
 
         //Verify
-        assertNotNull("La lista interna de mi servicio no ha sido instanciada", inMemoryTrainingStorageService.getCourseList());
-        assertNotEquals("El servicio no contiene cursos registrados", 0, inMemoryTrainingStorageService.getCourseList().size());
+        assertNotNull("La lista interna de mi servicio no ha sido instanciada", inMemoryTrainingStorageService.getTrainingList());
+        assertNotEquals("El servicio no contiene cursos registrados", 0, inMemoryTrainingStorageService.getTrainingList().size());
     }
 
     @Test
@@ -93,12 +87,12 @@ public class InMemoryTrainingStorageServiceTest {
 
 
         //Test
-        inMemoryTrainingStorageService.saveCourse(java);
-        inMemoryTrainingStorageService.saveCourse(angular);
+        inMemoryTrainingStorageService.saveTraining(java);
+        inMemoryTrainingStorageService.saveTraining(angular);
         inMemoryTrainingStorageService.numberOfCourses();
 
         //Verify
-        assertNotNull("La lista interna de mi servicio no ha sido instanciada", inMemoryTrainingStorageService.getCourseList());
+        assertNotNull("La lista interna de mi servicio no ha sido instanciada", inMemoryTrainingStorageService.getTrainingList());
         assertEquals("La lista no contiene 2 cursos almacenados como se esperaria que fuera, almacena basura", 2, inMemoryTrainingStorageService.numberOfCourses());
 
     }

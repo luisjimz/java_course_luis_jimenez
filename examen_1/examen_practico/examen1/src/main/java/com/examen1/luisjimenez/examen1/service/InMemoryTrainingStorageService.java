@@ -4,47 +4,35 @@ import com.examen1.luisjimenez.examen1.Training;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.LinkedList;
 import java.util.List;
 
 @Service
 public class InMemoryTrainingStorageService implements TrainingStorageService {
 
-    @Autowired
-    private Training training;
 
     @Autowired
-    private List<Training> courseList;
+    private List<Training> trainingList;
 
     public InMemoryTrainingStorageService(){
-        this.courseList = new LinkedList<>();
     }
 
     @Override
-    public void saveCourse(Training training){
-        List<Training> miLista = this.getCourseList();
+    public void saveTraining(Training training){
+        List<Training> miLista = this.getTrainingList();
         miLista.add(training);
-        this.setCourseList(miLista);
+        this.setTrainingList(miLista);
     }
 
     @Override
     public int numberOfCourses(){
-        return this.getCourseList().size();
+        return this.getTrainingList().size();
     }
 
-    public Training getTraining() {
-        return training;
+    public List<Training> getTrainingList() {
+        return trainingList;
     }
 
-    public void setTraining(Training training) {
-        this.training = training;
-    }
-
-    public List<Training> getCourseList() {
-        return courseList;
-    }
-
-    public void setCourseList(List<Training> courseList) {
-        this.courseList = courseList;
+    public void setTrainingList(List<Training> trainingList) {
+        this.trainingList = trainingList;
     }
 }

@@ -17,56 +17,47 @@ import static org.junit.Assert.*;
 @SpringBootTest
 public class TrainingTest {
 
-    @Autowired
-    private Person person;
-
-    //metodo_condicion_resultado
     @Test
-    public void inscribedTotal_devolverTotalInscritosSiEsNuloDevolverCero_unEntero(){
+    public void inscribedTotal_withNullList_returnsZero(){
+
+        //Setup
+        List<Person> personList = null;
+        Training training = new Training("Java", personList);
+
+        //Test
+        int x = training.inscribedTotal();
+
+        //Verify
+        assertEquals("Unexpected enrollment ammount", 0, x);
+    }
+
+    @Test
+    public void inscribedTotal_withEmptyList_returnsZero(){
+
+        //Setup
+        List<Person> personList = new LinkedList<>();
+        Training training = new Training("Java", personList);
+
+        //Test
+        int x = training.inscribedTotal();
+
+        //Verify
+        assertEquals("Unexpected enrollment ammount", 0, x);
+    }
+
+    @Test
+    public void inscribedTotal_with2inscribed_returns2(){
         //Setup
         Training training = new Training();
         List<Person> personList = new LinkedList<>();
-
-
+        personList.add(new Person ("Luis", "Jimenez"));
+        personList.add(new Person("Ernesto", "Guevara"));
         training.setInscribed(personList);
 
         //Test
         int x = training.inscribedTotal();
 
         //Verify
-        assertEquals("Si la lista está vacía, devuelve 0", 0, x);
+        assertEquals("Unexpected enrollment ammount", 2, x);
     }
-
-    @Test
-    public void inscribedTotal_devolverSiempreUnNumeroPositivo_unEntero(){
-        //Setup
-        Training training = new Training();
-        List<Person> personList = new LinkedList<>();
-        boolean checker;
-
-        person.setName("Luis");
-        person.setLastName("Jimenez");
-        personList.add(person);
-        person.setName("Juan");
-        person.setLastName("Ramirez");
-        personList.add(person);
-
-        training.setInscribed(personList);
-
-        //Test
-
-        if(training.inscribedTotal() <= 1){
-            checker = false;
-        }else{
-            checker = true;
-        }
-
-        //Verify
-        assertEquals("El número devuelto por la lista siempre debe ser positivo", true, checker);
-    }
-
-
-
-
-
 }

@@ -11,14 +11,14 @@ import java.util.List;
 public class EnrollmentService {
 
     @Autowired
-    TrainingStorageService trainingStorageService;
+    private TrainingStorageService trainingStorageService;
 
 
     public EnrollmentService(){
 
     }
 
-    public void signUp(Person person, Training training){
+    public void enroll(Person person, Training training){
         TrainingStorageService trainingStorageService = new InMemoryTrainingStorageService();
         if(person == null || training == null) {
             return;
@@ -33,7 +33,7 @@ public class EnrollmentService {
             List<Person> listaAlumnos = training.getInscribed();
             listaAlumnos.add(person);
             training.setInscribed(listaAlumnos);
-            trainingStorageService.saveCourse(training);
+            trainingStorageService.saveTraining(training);
         }
     }
 }

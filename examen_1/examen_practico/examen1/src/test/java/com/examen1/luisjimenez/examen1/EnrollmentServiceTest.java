@@ -17,14 +17,17 @@ import static org.junit.Assert.*;
 public class EnrollmentServiceTest {
 
     @Autowired
-    private  Person person;
+    private EnrollmentService enrollmentService;
 
-    @Autowired
-    private Training training;
+//    @Autowired
+//    private  Person person;
+//
+//    @Autowired
+//    private Training training;
 
     //metodo_condicion_resultado
     @Test
-    public void signUp_EjecucionDebeDetenerseSiTrainingOPersonaSonNulos_FinDeEjecucion(){
+    public void enroll_EjecucionDebeDetenerseSiTrainingOPersonaSonNulos_FinDeEjecucion(){
         //Setup
         EnrollmentService enrollmentService = new EnrollmentService();
         List<Person> listaAlumnos = new LinkedList<>();
@@ -47,7 +50,7 @@ public class EnrollmentServiceTest {
         java.setInscribed(listaAlumnos);
 
         //Test
-        enrollmentService.signUp(b, java);
+        enrollmentService.enroll(b, java);
 
         //Verify
         assertNotNull("Objetos Person no debe de ser nulo", java);

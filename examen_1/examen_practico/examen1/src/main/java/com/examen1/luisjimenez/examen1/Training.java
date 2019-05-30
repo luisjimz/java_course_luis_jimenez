@@ -1,6 +1,5 @@
 package com.examen1.luisjimenez.examen1;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -8,13 +7,15 @@ import java.util.List;
 @Component
 public class Training {
 
-    @Autowired
-    private Person person;
-
     private String courseName;
     private List<Person> inscribed;
 
     public Training(){
+    }
+
+    public Training(String courseName, List<Person> inscribed) {
+        this.courseName = courseName;
+        this.inscribed = inscribed;
     }
 
     public int inscribedTotal(){
@@ -35,16 +36,6 @@ public class Training {
             miCadena += "\n" + this.getInscribed().get(i);
         }
         return miCadena;
-    }
-
-    //Getters & Setters
-
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
     }
 
     public String getCourseName() {
