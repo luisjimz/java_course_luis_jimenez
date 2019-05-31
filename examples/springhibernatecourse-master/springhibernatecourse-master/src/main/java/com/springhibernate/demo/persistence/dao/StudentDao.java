@@ -16,7 +16,8 @@ import javax.persistence.criteria.Root;
 import java.util.List;
 import java.util.Optional;
 
-@Component @Slf4j
+@Component
+@Slf4j
 public class StudentDao implements IStudentDao {
     @PersistenceContext
     private EntityManager em;
@@ -32,6 +33,7 @@ public class StudentDao implements IStudentDao {
     }
 
     @Override
+    //Porque Autowired?
     @Autowired
     public List<Student> getAll() {
         System.out.println("---------------Printing studentList from JPQL query---------------");
